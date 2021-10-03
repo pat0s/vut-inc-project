@@ -8,35 +8,35 @@ use ieee.std_logic_unsigned.all;
 -------------------------------------------------
 entity UART_RX is
 port(	
-  CLK		      : 	in std_logic;
-	RST		      : 	in std_logic;
-	DIN	     	 : 	in std_logic;
-	DOUT		     : 	out std_logic_vector(7 downto 0);
-	DOUT_VLD	  : 	out std_logic
+	CLK	: in std_logic;
+	RST	: in std_logic;
+	DIN	: in std_logic;
+	DOUT	: out std_logic_vector(7 downto 0);
+	DOUT_VLD	: out std_logic
 );
 end UART_RX;  
 
 -------------------------------------------------
 architecture behavioral of UART_RX is
-signal cnt_din 			      : std_logic_vector(3 downto 0);
-signal cnt_to_mid  		   : std_logic_vector(4 downto 0);
-signal reading_en 		    : std_logic;
-signal cnt_to_mid_en 	  : std_logic;
-signal clr_mid          : std_logic;
-signal clr_din          : std_logic;
-signal vld              : std_logic;
+	signal cnt_din			: std_logic_vector(3 downto 0);
+	signal cnt_to_mid		: std_logic_vector(4 downto 0);
+	signal reading_en		: std_logic;
+	signal cnt_to_mid_en		: std_logic;
+	signal clr_mid			: std_logic;
+	signal clr_din			: std_logic;
+	signal vld			: std_logic;
 
 begin
 	finite_state_machine : entity work.UART_FSM(behavioral)
 	port map ( 
-		CLK			  	       => CLK,
-		RST				        => RST,
-		DIN				        => DIN,
-		CNT_DIN			      => cnt_din,
-		CNT_TO_MID 		   => cnt_to_mid,
-		VLD			          => vld,
-		READING_EN		    => reading_en,
-		CNT_TO_MID_EN   => cnt_to_mid_en
+		CLK			=> CLK,
+		RST			=> RST,
+		DIN			=> DIN,
+		CNT_DIN			=> cnt_din,
+		CNT_TO_MID		=> cnt_to_mid,
+		VLD			=> vld,
+		READING_EN		=> reading_en,
+		CNT_TO_MID_EN		=> cnt_to_mid_en
 	);	
 	
 	-- Count clock cycles to mid bit

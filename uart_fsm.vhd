@@ -7,8 +7,8 @@ use ieee.std_logic_1164.all;
 -------------------------------------------------
 entity UART_FSM is
 port(
-  CLK              : in std_logic;
-  RST              : in std_logic;
+	CLK              : in std_logic;
+	RST              : in std_logic;
 	DIN              : in std_logic;
 	CNT_DIN          : in std_logic_vector(3 downto 0);
 	CNT_TO_MID       : in std_logic_vector(4 downto 0);
